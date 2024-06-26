@@ -10,4 +10,7 @@ public class NavigationBarActions extends UIInteractions {
     public void openCart(){
         find(NavigationBar.SHOPPING_CART_BUTTON).click();
     }
+
+    @Step
+    public void openMenu(){find(NavigationBar.MENU_BUTTON).click();}
 }
