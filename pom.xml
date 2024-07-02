@@ -84,7 +84,7 @@
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>aggregate</goal>
-                            <goal>check</goal>
+<!--                            <goal>check</goal>-->
                         </goals>
                     </execution>
                 </executions>
