@@ -22,6 +22,7 @@ public class SauceDemo {
     CheckoutActions checkout;
     OverViewActions overView;
     PurchaseResult purchaseResult;
+    MenuActions menu;
 
     @BeforeEach
     public void logIn(){
@@ -41,7 +42,21 @@ public class SauceDemo {
         checkout.fillPurchaseInfo(User.STANDARD_USER);
         overView.finishPurchase();
         Serenity.reportThat("The purchase was Successful",()->assertThat(purchaseResult.result()).isEqualToIgnoringCase("Thank you for your order!"));
+    }
 
+    @Test
+    public void removeAllProductsFromCart(){
+        inventory.addMultipleProductsToCart(3);
+        navigate.openCart();
+        cart.removeProductsFromCart(3);
+        Serenity.reportThat("Shopping cart is clear",()->assertThat(cart.numberOfItemsInCart()).isEqualTo(0));
+    }
+
+    @Test
+    public void successfulLogout(){
+        navigate.openMenu();
+        menu.logout();
+        Serenity.reportThat("user had a successful logout",()->assertThat(logIn.isDisplayed()).isTrue());
     }
 
 

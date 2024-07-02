@@ -20,8 +20,10 @@ public class LogInActions extends UIInteractions {
         find(LogInPage.USERNAME_INPUT).sendKeys(user.getUsername());
         find(LogInPage.PASSWORD_INPUT).sendKeys(user.getPassword());
         find(LogInPage.LOGIN_BUTTON).click();
+    }
 
-
+    public boolean isDisplayed(){
+        return find(LogInPage.USERNAME_INPUT).isDisplayed() && find(LogInPage.PASSWORD_INPUT).isDisplayed() && find(LogInPage.LOGIN_BUTTON).isDisplayed();
     }
 
 

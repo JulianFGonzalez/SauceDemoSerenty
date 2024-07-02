@@ -30,4 +30,16 @@ public class InventoryActions extends UIInteractions {
         inventoryPage.products().get(productNumber).find(By.cssSelector(".btn_primary.btn_inventory")).click();
     }
 
+    @Step
+    public void addMultipleProductsToCart(int numberOfProducts){
+        for(int i=0;i<numberOfProducts;i++){
+            int randomProduct = selectARandomProduct();
+            while(inventoryPage.products().get(randomProduct).containsElements(By.cssSelector(".btn_secondary.btn_inventory"))){
+                randomProduct = selectARandomProduct();
+            }
+            addAProductToCart(randomProduct);
+            inventoryPage.products().get(randomProduct).find(By.cssSelector(".btn_secondary.btn_inventory")).waitUntilVisible();
+        }
+    }
+
 }
